@@ -1,0 +1,18 @@
+{
+    "name": "pleisterman/urenadministratie",
+    "type": "project",
+    "description": "Time-Registration",
+    "keywords": ["no-framework"],
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "php": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "php\\": "php/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

@@ -1,0 +1,145 @@
+program started at13:55:48:000000
+UserOptions GetAll
+
+    Select sql: SELECT name, value FROM options 
+
+options result: [{"name":"ridesListType","value":"day"},{"name":"projectsListType","value":"lastUsed"},{"name":"contactsListType","value":"open"},{"name":"contactsHeaderOpen","value":"true"},{"name":"projectsHeaderOpen","value":"true"},{"name":"listOrder","value":"projects,tasks,contacts,rides,vehicles,export"},{"name":"showListOrder","value":"false"},{"name":"vehiclesHeaderOpen","value":"true"},{"name":"vehiclesListType","value":"lastUsed"},{"name":"editSubject","value":"projects"},{"name":"editId","value":"1"},{"name":"tasksHeaderOpen","value":"true"},{"name":"leftPanelDividerPosition","value":"427"},{"name":"tasksListType","value":"day"},{"name":"startWeekAtMonday","value":"true"},{"name":"sound","value":"false"},{"name":"listLength","value":"5"},{"name":"ridesHeaderOpen","value":"true"},{"name":"ridesListSelectionOffset","value":"{\"year\":2025,\"month\":2,\"day\":15}"},{"name":"vehiclesListSelectionOffset","value":"0"},{"name":"exportHeaderOpen","value":"false"},{"name":"vatListSelectionOffset","value":"0"},{"name":"mobileOpenSubject","value":"rides"},{"name":"contactsListSelectionOffset","value":"0"},{"name":"projectsListSelectionOffset","value":"0"},{"name":"tasksListSelectionOffset","value":"{\"year\":2025,\"month\":4,\"day\":2}"},{"name":"exportListSelectionOffset","value":"0"},{"name":"exportListType","value":"export"},{"name":"taskProjectListSelectionOffset","value":"0"},{"name":"taskProjectListType","value":"open"},{"name":"rideProjectListSelectionOffset","value":"0"},{"name":"rideProjectListType","value":"lastUsed"},{"name":"rideVehicleListType","value":"open"},{"name":"rideVehicleListSelectionOffset","value":"0"},{"name":"projectContactsListSelectionOffset","value":"0"},{"name":"projectContactsListType","value":"lastUsed"}]
+
+program ended at: 13:55:48:000000
+
+program busy for: 0.012598991394043 seconds
+
+program started at13:55:51:000000
+program started at13:55:51:000000
+      list: projects getLastUsedList offset: 0
+      list: contacts getOpenList offset: 0
+UserOptions get name: listLength
+
+    Select sql: SELECT name, value FROM options WHERE name= ? 
+
+UserOptions get name: listLength
+
+    Select sql: SELECT name, value FROM options WHERE name= ? 
+
+option result: {"name":"listLength","value":"5"}
+      projects list: getOffsetRow id: 0
+
+    Select sql: SELECT id, used FROM projects WHERE id= ? 
+
+      projects list: getFirstRow
+
+    Select sql: SELECT id, used FROM projects ORDER BY used DESC LIMIT ? 
+
+      projects list: getCount
+
+    Select sql: SELECT count(*) as count FROM projects 
+
+      projects list: getOffsetCount  used: 2025-04-16 12:26:49
+
+    Select sql: SELECT count(*) as count FROM projects WHERE used >= ? ORDER BY used DESC 
+
+program started at13:55:51:000000
+      projects list: getPreviousPageId  used: 2025-04-16 12:26:49 limit: 5
+
+    Select sql: SELECT id FROM projects WHERE used >= ? ORDER BY used ASC LIMIT ? 
+
+      projects list: getNextPageId  used: 2025-04-16 12:26:49 limit: 5
+       NextPage  options: {"action":"select","tables":["projects"],"columns":["id"],"clauses":["used <="],"order":["used DESC"],"limit":true,"variables":"si","values":["2025-04-16 12:26:49",6]}
+
+    Select sql: SELECT id FROM projects WHERE used <= ? ORDER BY used DESC LIMIT ? 
+
+
+    Select sql: SELECT id, name FROM projects WHERE used<= ? ORDER BY used DESC LIMIT ? 
+
+      addTitles
+option result: {"name":"listLength","value":"5"}
+      contacts list: getOffsetRow id: 0
+
+    Select sql: SELECT id, name FROM contacts WHERE id= ? 
+
+
+program ended at: 13:55:51:000000
+
+program busy for: 0.020648002624512 seconds
+
+      contacts list: getFirstRow
+
+    Select sql: SELECT id, name FROM contacts WHERE closed IS NULL ORDER BY name ASC LIMIT ? 
+
+      contacts list: getCount
+
+    Select sql: SELECT count(*) as count FROM contacts WHERE closed IS NULL 
+
+
+    Select sql: SELECT id, name FROM contacts WHERE closed IS NULL ORDER BY name ASC LIMIT ? 
+
+      list: tasks getDayList date: 20250402
+
+    Select sql: SELECT id, date, startTime, endTime, description FROM tasks WHERE date= ? ORDER BY startTime ASC 
+
+      addTitles
+
+program ended at: 13:55:51:000000
+
+program busy for: 0.025851011276245 seconds
+
+      addTitles
+program started at13:55:51:000000
+program started at13:55:51:000000
+
+program ended at: 13:55:51:000000
+
+program busy for: 0.21955418586731 seconds
+
+
+    Select sql: SELECT * FROM projects WHERE id= ? 
+
+
+    Select sql: SELECT b.id, b.name FROM projectcontacts as a, contacts as b WHERE a.projectId= ?  AND a.contactId=b.id ORDER BY b.name ASC 
+
+      list: vehicles getLastUsedList offset: 0
+UserOptions get name: listLength
+
+    Select sql: SELECT name, value FROM options WHERE name= ? 
+
+program started at13:55:51:000000
+option result: {"name":"listLength","value":"5"}
+      vehicles list: getOffsetRow id: 0
+
+    Select sql: SELECT id, used FROM vehicles WHERE id= ? 
+
+      vehicles list: getFirstRow
+
+    Select sql: SELECT id, used FROM vehicles ORDER BY used DESC LIMIT ? 
+
+      list: rides getDayList date: 20250215
+
+    Select sql: SELECT id, date, description, odometerStart, odometerEnd FROM rides WHERE date= ? ORDER BY odometerStart ASC 
+
+      vehicles list: getCount
+
+    Select sql: SELECT count(*) as count FROM vehicles 
+
+      addTitles
+
+    Select sql: SELECT id, name FROM vehicles ORDER BY used DESC LIMIT ? 
+
+
+program ended at: 13:55:51:000000
+
+program busy for: 0.016597032546997 seconds
+
+      addTitles
+
+program ended at: 13:55:51:000000
+
+program busy for: 0.14526391029358 seconds
+
+
+    Update sql: UPDATE projects SET used= ?  WHERE id= ? 
+
+
+program ended at: 13:55:51:000000
+
+program busy for: 0.27136492729187 seconds
+
